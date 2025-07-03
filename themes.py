@@ -23,12 +23,12 @@ def display_duties_in_terminal():
 def save_duties_to_html():
     f = open("duties.html", "w")
     
-    f.write("<!DOCTYPE html>\n <html lang=\"en\">\n <head>\n    <title>DevOps Apprenticeship Themes</title>\n </head>\n <body>\n    <h1>Level 4 DevOps Engineer Apprenticeship Themes</h1>\n    <h2>Duties</h2>\n        <ol>\n")
+    f.write("<!DOCTYPE html>\n <html lang=\"en\">\n <head>\n    <title>DevOps Apprenticeship Themes</title>\n </head>\n <body>\n    <h1>Level 4 DevOps Engineer Apprenticeship Themes</h1>\n    <h2>Duties</h2>\n        <ul>\n")
     
     for duty in duties_list:
-        f.write(f"            <li>{duty[7:]}</li>\n")
+        f.write(f"            <li>{duty}</li>\n")
     
-    f.write(f"        </ol>\n")
+    f.write(f"        </ul>\n")
     f.write("</body>\n</html>")
     f.close()
 
