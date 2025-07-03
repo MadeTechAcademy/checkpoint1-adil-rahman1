@@ -1,6 +1,6 @@
 import os
 
-duties_list = [
+duties = [
     "Duty 1 Script and code in at least one general purpose language and at least one domain-specific language to orchestrate infrastructure, follow test driven development and ensure appropriate test coverage.",
     "Duty 2 Initiate and facilitate knowledge sharing and technical collaboration with teams and individuals, with a focus on supporting development of team members.",
     "Duty 3 Engage in productive pair/mob programming to underpin the practice of peer review.",
@@ -16,16 +16,25 @@ duties_list = [
     "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
 ]
 
+all_themes = {
+    "Bootcamp": [1,2,3,4,13],
+    "Automate!": [5,7,10],
+    'Houston, Prepare to Launch': [6,7,10,12],
+    "Going Deeper": [11],
+    "Assemble!": [8],
+    "Call Security": [9]
+}
+
 def display_duties_in_terminal():
-    for duty in duties_list:
+    for duty in duties:
         print("{0}\n".format(duty))
     
 def save_duties_to_html():
     f = open("duties.html", "w")
     
-    f.write("<!DOCTYPE html>\n <html lang=\"en\">\n <head>\n    <title>DevOps Apprenticeship Themes</title>\n </head>\n <body>\n    <h1>Level 4 DevOps Engineer Apprenticeship Themes</h1>\n    <h2>Duties</h2>\n        <ul>\n")
+    f.write("<!DOCTYPE html>\n <html lang=\"en\">\n <head>\n    <title>DevOps Apprenticeship</title>\n </head>\n <body>\n    <h1>Level 4 DevOps Engineer Apprenticeship</h1>\n    <h2>Duties</h2>\n        <ul>\n")
     
-    for duty in duties_list:
+    for duty in duties:
         f.write(f"            <li>{duty}</li>\n")
     
     f.write(f"        </ul>\n")
@@ -38,12 +47,30 @@ def delete_html_duties_file():
     else:
         print("The file does not exist")
 
+def save_themes_to_html(theme):
+    f = open("themes.html", "w")
+    f.write(f"<!DOCTYPE html>\n <html lang=\"en\">\n <head>\n    <title>DevOps Apprenticeship</title>\n </head>\n <body>\n    <h1>Level 4 DevOps Engineer Apprenticeship</h1>\n    <h2>{theme}</h2>\n        <ul>\n")
+
+    for duty_no in all_themes[theme]:
+        f.write(f"            <li>{duties[duty_no - 1]}</li>\n")
+
+    f.write(f"        </ul>\n")
+    f.write("</body>\n</html>")
+    f.close()
+
 if __name__== "__main__":
     x = input("""
     Welcome to apprentice themes!\n
     Press (1) to list all the duties on the terminal\n
     Press (2) to list all the duties in HTML\n
     Press (3) to delete the HTML file of all duties\n
+    To see a theme and it's associated duties, press\n
+        (4) to choose 'Bootcamp'\n
+        (5) to choose 'Automate!'\n
+        (6) to choose 'Houston, Prepare to Launch'\n
+        (7) to choose 'Going Deeper'\n
+        (8) to choose 'Assemble!'\n
+        (9) to choose 'Call Security'\n
     Enter your choice: 
     """)
     if x == '1':
@@ -52,3 +79,15 @@ if __name__== "__main__":
         save_duties_to_html()
     elif x == '3':
         delete_html_duties_file()
+    elif x == '4':
+        save_themes_to_html('Bootcamp')
+    elif x == '5':
+        save_themes_to_html('Automate!')
+    elif x == '6':
+        save_themes_to_html('Houston, Prepare to Launch')
+    elif x == '7':
+        save_themes_to_html('Going Deeper')
+    elif x == '8':
+        save_themes_to_html('Assesmble!')
+    elif x == '9':
+        save_themes_to_html('Call Security')
