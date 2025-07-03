@@ -1,3 +1,5 @@
+import os
+
 duties_list = [
     "Duty 1 Script and code in at least one general purpose language and at least one domain-specific language to orchestrate infrastructure, follow test driven development and ensure appropriate test coverage.",
     "Duty 2 Initiate and facilitate knowledge sharing and technical collaboration with teams and individuals, with a focus on supporting development of team members.",
@@ -30,14 +32,23 @@ def save_duties_to_html():
     f.write("</body>\n</html>")
     f.close()
 
+def delete_html_duties_file():
+    if os.path.exists("duties.html"):
+        os.remove("duties.html")
+    else:
+        print("The file does not exist")
+
 if __name__== "__main__":
     x = input("""
     Welcome to apprentice themes!\n
     Press (1) to list all the duties on the terminal\n
     Press (2) to list all the duties in HTML\n
+    Press (3) to delete the HTML file of all duties\n
     Enter your choice: 
     """)
     if x == '1':
         display_duties_in_terminal()
     elif x == '2':
         save_duties_to_html()
+    elif x == '3':
+        delete_html_duties_file()
