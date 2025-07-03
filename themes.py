@@ -14,15 +14,30 @@ duties_list = [
     "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
 ]
 
-def go():
+def display_duties_in_terminal():
     for duty in duties_list:
         print("{0}\n".format(duty))
+    
+def save_duties_to_html():
+    f = open("duties.html", "w")
+    
+    f.write("<!DOCTYPE html>\n <html lang=\"en\">\n <head>\n    <title>DevOps Apprenticeship Themes</title>\n </head>\n <body>\n    <h1>Level 4 DevOps Engineer Apprenticeship Themes</h1>\n    <h2>Duties</h2>\n        <ol>\n")
+    
+    for duty in duties_list:
+        f.write(f"            <li>{duty[7:]}</li>\n")
+    
+    f.write(f"        </ol>\n")
+    f.write("</body>\n</html>")
+    f.close()
 
 if __name__== "__main__":
     x = input("""
     Welcome to apprentice themes!\n
-    Press (1) to list all the duties\n
-    Enter your choice:
+    Press (1) to list all the duties on the terminal\n
+    Press (2) to list all the duties in HTML\n
+    Enter your choice: 
     """)
     if x == '1':
-        go()
+        display_duties_in_terminal()
+    elif x == '2':
+        save_duties_to_html()
