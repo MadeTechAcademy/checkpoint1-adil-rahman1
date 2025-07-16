@@ -1,10 +1,11 @@
-from themes import duties
+from themes import duties, save_duties_to_html
 import re
 
 def test_13_duties_exist():
     assert len(duties) == 13
 
 def test_13_list_items_display_in_html():
+    save_duties_to_html()
     with open('duties.html', 'r') as html_file:
         file_content = html_file.read()
     
@@ -12,6 +13,7 @@ def test_13_list_items_display_in_html():
     assert len(matches) == 13
 
 def test_each_duty_exists_in_html():
+    save_duties_to_html()
     with open('duties.html', 'r') as html_file:
         file_content = html_file.read()
     
